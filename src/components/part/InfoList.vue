@@ -1,18 +1,16 @@
 <template>
-  <section class="instru corner-t">
-    <div class="ins-wraper">
-      <div class="ins-img">
-        <img src="../../../static/images/deploy/instru.png">
-        <div class="ins-arc"></div>
-      </div>
-      <ul class="ins-rotate">
-        <li v-for="(itm, idx) in items" :key="idx">
-          <span>{{itm.name}}</span>
-          <span>{{itm.cont}}</span>
-        </li>
-      </ul>
-    </div>
-    <i class="corner-i"></i>
+  <section class="cont-tag info-list">
+    <ul>
+      <li class="item clearFix"
+        v-for="(list, idx) in lists"
+        :key="idx">
+        <p class="fl item-l">{{list.cont}}</p>
+        <div class="fr item-r clearFix">
+          <span class="item-t fr">{{list.time}}</span>
+          <span class="item-src fr">{{list.src}}</span>
+        </div>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -42,14 +40,12 @@
     data, mounted,
     methods: {},
     props: {
-      items: {
+      lists: {
         type: Array,
         required: true,
-        validator(arr) {
-          return arr.length === 6;
-        },
-      }
-    }
+      },
+    },
+
   }
   //endregion
 

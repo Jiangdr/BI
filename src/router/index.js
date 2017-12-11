@@ -2,13 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 /****************/
-//region  //import components
-// import Main from '@/components/main'
 const Main = () => import('@/components/main')
 const Test = () => import('@/components/Test')
-
-
-//endregion
 
 Vue.use(Router)
 
@@ -18,13 +13,12 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      component: Main,
+      component: Main
     },
     {
       path: '/test',
       name: 'test',
-      component: Test,
-
+      component: Test
     }
   ]
 })

@@ -67,13 +67,13 @@
 
   @media screen and (min-width: 1400px) {
     html, body {
-      font-size: 17px;
+      font-size: 18px;
     }
   }
 
   @media screen and (min-width: 1500px) {
     html, body {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 </style>

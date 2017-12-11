@@ -6,14 +6,14 @@ import router from './router'
 import echarts from 'echarts'
 
 Vue.config.productionTip = false
-Vue.config.devtools = false
+// Vue.config.devtools = true
 
 
 //global value
 import _global from '@/api/global.js'
 
 //Mount global parameters to Vue
-Object.defineProperty(Vue.prototype, "_global", {
+Object.defineProperty(Vue.prototype, '_global', {
     get: function () {
         return _global;
     }
