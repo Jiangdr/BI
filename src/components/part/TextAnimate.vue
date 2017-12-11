@@ -146,10 +146,10 @@
         Object.defineProperties(own, {
           x: {
             get() {
-              return 0
+              return
             },
             set(v) {
-              tar.x = 0;
+              // tar.x = 0;
             },
           }
         })
