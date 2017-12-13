@@ -71,7 +71,7 @@ function sockJs({callback, Vue, theme, ws}) {
 }
 
 /**
- *深拷贝
+ *深拷贝,为了适应vue的数组绑定
  * @peram deep Boolean true => 深拷贝
  * @return 目标对象
  */
@@ -81,19 +81,30 @@ function $extend(deep, ...rest) {
   } else if (deep === true && rest.every(v => typeof v === "object")) {//deep copy
     let [own, ...copy] = rest;
     copy.forEach(obj => {
-      for (let key in obj) {
-        if (!obj.hasOwnProperty(key)) continue;//ignore prototype
-        let val = obj[key], target = own[key];
-        if (typeof val === "object" && val !== null) {//Copy the arrays, objects
-          let constV = val.constructor,
-            constT = (target !== undefined && target !== null) && target.constructor;
-          if (constT === constV) {
-            $extend(true, target, val);
+      if (Object.prototype.toString.call(obj) === '[object Array]' && own.splice) {
+        /*if Array, use splice for Vue*/
+        obj.forEach((itm, idx) => {
+          if (typeof itm === "object" && itm !== null) {
+            own.splice(idx, 1, $extend(true, itm.constructor === Array ? [] : {}, itm));
           } else {
-            $extend(true, own[key] = constV === Array ? [] : {}, val);
+            own.splice(idx, 1, itm);
           }
-        } else {
-          own[key] = val;
+        })
+      } else {
+        for (let key in obj) {
+          if (!obj.hasOwnProperty(key)) continue;//ignore prototype
+          let own_val = own[key], copy_val = obj[key];
+          if (typeof copy_val === "object" && copy_val !== null) {//Copy the arrays, objects
+            let constCopy = copy_val.constructor,
+              constOwn = (own_val !== undefined && own_val !== null) && own_val.constructor;
+            if (constOwn === constCopy || constOwn === Object) {
+              $extend(true, own_val, copy_val);
+            } else {
+              $extend(true, own[key] = constCopy === Array ? [] : {}, copy_val);
+            }
+          } else {
+            own[key] = copy_val;
+          }
         }
       }
     })

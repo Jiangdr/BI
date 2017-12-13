@@ -29,7 +29,7 @@
     return {
       echart: null,
     }
-  }
+  };
 
   //endregion
 

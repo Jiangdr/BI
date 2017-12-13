@@ -58,6 +58,7 @@
   /******************/
   //region    //import
   import axios from 'axios'
+  import __g from '@/api/global'
 
   const InfoList = () => import('./part/InfoList.vue');//列表组件
   const BarEcharts = () => import('./part/BarEcharts.vue');//柱状图组件
@@ -163,8 +164,8 @@
    */
   function mounted() {
     setTimeout(() => {
-      this.list.push(22)
-    }, 2000)
+      // this.hotTopic = ['我', '我', '我', '我',];
+    }, 3000)
   }
 
 
@@ -176,7 +177,7 @@
     if (sum < 10) {//不超过十万，精确到千
       return Math.round(sum * 10) / 10;
     } else {//超过十万，精确到万
-      return Math.round(sum)
+      return Math.round(sum);
     }
   }
 
@@ -195,7 +196,7 @@
         str = "," + str;
       }
       str = item + str;
-    })
+    });
     return str;
   }
 
