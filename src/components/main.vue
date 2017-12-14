@@ -2,7 +2,7 @@
   <main class="full-box">
     <header class="nav-header">
       <figure class="logo-wrap">
-        <img src="../../static/images/deploy/herd.png" alt="">
+        <img src="static/images/sett.png" alt="">
       </figure>
     </header>
 
@@ -220,7 +220,7 @@
     $orange: rgba(255, 145, 37, 1); //橙色*/
 
   .full-box {
-    background: #111;
+    background: #192028;
     /*min-width: 1170px;*/
     min-height: 600px;
   }
@@ -239,9 +239,15 @@
   .nav-header {
     height: $nav-height;
     margin-bottom: -$interval;
-    text-align: center;
-    .logo-wrap, img {
+    padding: 10px $interval;
+    .logo-wrap {
+      background: url("../../static/images/bot-set.png") no-repeat bottom right;
+      -webkit-background-size: contain;
+      background-size: contain;
       height: 100%;
+      img {
+        height: 80%;
+      }
     }
   }
 
