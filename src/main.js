@@ -26,7 +26,6 @@ Object.defineProperties(Vue.prototype, {
   },
 })
 
-// Vue.prototype._global = _global;
 
 /* eslint-disable no-new */
 new Vue({
