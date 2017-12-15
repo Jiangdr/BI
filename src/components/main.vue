@@ -504,6 +504,7 @@
    * @param msg
    */
   function rotaryMsg(msg, Vue) {
+    // console.log(JSON.parse(msg));
     let {allMark, companyName, sixAb, todayMark, allMark: {companyNum}} = JSON.parse(msg),
       {idx} = Vue;
     Vue.idx = ++idx >= companyNum ? 0 : idx;
