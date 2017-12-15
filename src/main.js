@@ -13,26 +13,23 @@ Vue.config.productionTip = false
 import _global from '@/api/global.js'
 
 //Mount global parameters to Vue
-Object.defineProperty(Vue.prototype, '_global', {
+Object.defineProperties(Vue.prototype, {
+  '_global': {
     get: function () {
-        return _global;
-    }
-})
-
-//Mount echarts to Vue
-Object.defineProperty(Vue.prototype, "_echarts", {
+      return _global;
+    },
+  },
+  '_echarts': {//Mount echarts to Vue
     get: function () {
-        return echarts;
-    }
+      return echarts;
+    },
+  },
 })
-
-
-// Vue.prototype._global = _global;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })
